@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fahrin<span>Portfolio</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="game.html">Interactive JS</a></li>
+                <li><button id="themeToggle" class="theme-btn">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="home-container">
+        <section class="hero-section">
+
+            <div class="hero-content">
+                <span class="badge">Welcome to my space</span>
+                <h1>Hi, I am <span class="highlight">MUHAMMAD FAHRIN NAZMI</span></h1>
+                <h2 class="subtitle">Future Electronic Engineering & IoT Specialist</h2>
+                <p class="description">
+                    Passionate about microcontrollers, automated systems, and building smart solutions.
+                    This interactive personal space showcases my academic milestones, technical skillsets, and creative projects.
+                </p>
+                <div class="cta-group">
+                    <a href="profile.html" class="btn btn-primary">Explore Profile</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-num">3+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-num">2+</div>
+                        <div class="stat-label">Years Study</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-num">4+</div>
+                        <div class="stat-label">Tech Skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <div class="glow-ring">
+                    <div class="avatar-ring-outer"></div>
+                    <div class="avatar-ring-inner"></div>
+                    <img src="bro.jpg" alt="Fahrin's Profile Picture" class="profile-img"
+                         onerror="this.style.display='none';document.querySelector('.avatar-fallback').style.display='flex'">
+                    <div class="avatar-fallback">FN</div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TVET MARA Petaling Jaya. All Rights Reserved.</p>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script>
+        // ─── THEME TOGGLE ───────────────────────────────────────────
+        const toggleBtn = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const saved = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', saved);
+        toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+        toggleBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ─── PARTICLE CANVAS ────────────────────────────────────────
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        for (let i = 0; i < 55; i++) {
+            pts.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: Math.random() * 1.5 + 0.5
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            const dotColor = isDark ? 'rgba(14,165,233,0.4)' : 'rgba(14,165,233,0.2)';
+
+            pts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = dotColor;
+                ctx.fill();
+            });
+
+            pts.forEach((a, i) => pts.slice(i + 1).forEach(b => {
+                const d = Math.hypot(a.x - b.x, a.y - b.y);
+                if (d < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.strokeStyle = `rgba(14,165,233,${0.07 * (1 - d / 110)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }));
+
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    </script>
+
+</body>
+</html>
