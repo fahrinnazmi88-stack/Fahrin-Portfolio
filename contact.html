@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Interactive JS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+    <style>
+        #bg-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fahrin<span>Portfolio</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="game.html" class="active">JS Tools</a></li>
+                <li><button id="themeToggle" class="theme-btn">🌙</button></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="game.html" class="active">JS Tools</a>
+        <button id="mobileThemeToggle" class="theme-btn mobile-theme-btn">🌙</button>
+    </nav>
+
+    <main class="game-container animate-fade-in">
+        <div class="page-header">
+            <div class="page-badge"><span class="pulse-dot"></span><span>Interactive Modules / Live Engine</span></div>
+            <h1>Interactive <span class="accent-text">JS</span> Tools</h1>
+            <p class="page-desc">Live-running JavaScript utilities — engineering converters, currency rates, and biomedical diagnostics.</p>
+        </div>
+        <div class="tools-grid">
+            <!-- BLOCK 1: ENGINEERING CONVERTER -->
+            <div class="tool-card">
+                <div class="tool-card-header">
+                    <div class="tool-icon">⚙️</div>
+                    <div>
+                        <h3>Engineering &amp; IoT <span class="accent-text">Converter</span></h3>
+                        <p class="tool-sub">Mathematical dictionary conversion for engineering parameters, sensors, and computing data.</p>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label>Measurement Category</label>
+                    <select id="valCategory" class="styled-select">
+                        <option value="data">Data Size (Bytes, KB, MB, GB, TB)</option>
+                        <option value="length">Length / Distance</option>
+                        <option value="mass">Mass / Weight</option>
+                        <option value="area">Area</option>
+                        <option value="volume">Volume</option>
+                        <option value="time">Time</option>
+                        <option value="speed">Speed / Velocity</option>
+                        <option value="pressure">Pressure</option>
+                        <option value="energy">Energy</option>
+                        <option value="power">Power</option>
+                        <option value="frequency">Frequency</option>
+                        <option value="angle">Angle</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label>Enter Value</label>
+                    <input type="number" id="valInput" class="styled-input" value="1" placeholder="Enter value">
+                </div>
+                <div class="field-row">
+                    <div class="field-group"><label>From</label><select id="valFrom" class="styled-select"></select></div>
+                    <div class="field-group"><label>To</label><select id="valTo" class="styled-select"></select></div>
+                </div>
+                <button id="valBtn" class="tool-btn btn-cyan">Convert Technical Unit</button>
+                <div class="result-box">
+                    <span class="result-label">Conversion Result:</span>
+                    <span id="valResult" class="result-value">--</span>
+                </div>
+            </div>
+            <!-- BLOCK 2: LIVE CURRENCY -->
+            <div class="tool-card">
+                <div class="tool-card-header">
+                    <div class="tool-icon">💱</div>
+                    <div>
+                        <h3>Live Currency <span class="accent-green">Converter</span></h3>
+                        <p class="tool-sub">Real-time foreign exchange rate converter covering major Asian and European economic markets.</p>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label>Amount</label>
+                    <input type="number" id="curInput" class="styled-input" value="100" placeholder="Enter amount">
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label>Source Currency</label>
+                        <select id="curFrom" class="styled-select"><option value="MYR">Malaysian Ringgit (MYR)</option><option value="USD">US Dollar (USD)</option><option value="SGD">Singapore Dollar (SGD)</option></select>
+                    </div>
+                    <div class="field-group">
+                        <label>Target Currency</label>
+                        <select id="curTo" class="styled-select"><option value="USD" selected>US Dollar (USD)</option><option value="MYR">Malaysian Ringgit (MYR)</option><option value="SGD">Singapore Dollar (SGD)</option></select>
+                    </div>
+                </div>
+                <button id="curBtn" class="tool-btn btn-green">Convert Currency</button>
+                <div class="result-box result-green">
+                    <span class="result-label">Calculated Value:</span>
+                    <span id="curResult" class="result-value">--</span>
+                </div>
+            </div>
+            <!-- BLOCK 3: BIOMEDICAL -->
+            <div class="tool-card">
+                <div class="tool-card-header">
+                    <div class="tool-icon">🩺</div>
+                    <div>
+                        <h3>Biomedical Health <span class="accent-red">Checker</span></h3>
+                        <p class="tool-sub">Smart diagnostic panel for blood vitals, comprehensive body metrics, and thermal analysis.</p>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label>Select Vitals Parameter</label>
+                    <select id="healthType" class="styled-select">
+                        <option value="glucose">Blood Glucose (Sugar Level Conversion)</option>
+                        <option value="bp">Blood Pressure (Systolic / Diastolic)</option>
+                        <option value="bmi">BMI (Body Mass Index)</option>
+                        <option value="temp">Body Temperature Converter</option>
+                    </select>
+                </div>
+                <div id="healthInputArea">
+                    <div class="field-group">
+                        <label for="glucoseInput">Glucose Value</label>
+                        <input type="number" id="glucoseInput" class="styled-input" step="0.1" placeholder="e.g., 5.6" value="5.5">
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group"><label for="glucoseFrom">Unit From</label><select id="glucoseFrom" class="styled-select"><option value="mmol">mmol/L (MY)</option><option value="mg">mg/dL (US)</option></select></div>
+                        <div class="field-group"><label for="glucoseTo">Unit To</label><select id="glucoseTo" class="styled-select"><option value="mg" selected>mg/dL (US)</option><option value="mmol">mmol/L (MY)</option></select></div>
+                    </div>
+                </div>
+                <button id="healthBtn" class="tool-btn btn-red">Analyze Health Metrics</button>
+                <div class="result-box result-red">
+                    <span class="result-label">Diagnostic Summary:</span>
+                    <span id="healthResult" class="result-value">--</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer><p>&copy; 2026 Tvet Mara Petaling Jaya. All Rights Reserved.</p></footer>
+
+    <script src="nav.js"></script>
+    <script src="currency-dropdown.js"></script>
+    <script src="converter.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const saved = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', saved);
+        toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+        toggleBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+            const mb = document.getElementById('mobileThemeToggle');
+            if (mb) mb.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        }));
+        const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+        mobileThemeBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+        mobileThemeBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+            mobileThemeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+        function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+        resize(); window.addEventListener('resize',resize);
+        for(let i=0;i<55;i++) pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.5});
+        function drawParticles(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            const isDark=html.getAttribute('data-theme')==='dark';
+            const dotColor=isDark?'rgba(14,165,233,0.4)':'rgba(14,165,233,0.2)';
+            pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=dotColor;ctx.fill();});
+            pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(14,165,233,${0.07*(1-d/110)})`;ctx.lineWidth=0.5;ctx.stroke();}}));
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    </script>
+</body>
+</html>
