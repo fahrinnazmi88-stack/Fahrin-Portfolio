@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fahrin<span>Portfolio</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="game.html">Interactive JS</a></li>
+                <li><button id="themeToggle" class="theme-btn">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="profile-container">
+
+        <div class="hero-card">
+         <div class="avatar-wrap">
+    <div class="profile-avatar" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <img src="bro.jpg" alt="Fahrin" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="avatar-ring"></div>
+    <div class="avatar-ring2"></div>
+</div>
+            <div class="profile-intro">
+                 <h2>MUHAMMAD FAHRIN NAZMI</span></h2>
+                <p class="tagline">IoT Engineering Student · TVET MARA PJ</p>
+                <p class="bio">Bridging heavy industrial automation with modern web technologies. Specialized in microcontroller systems, PLC programming, and real-time IoT dashboards.</p>
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Open to Internship Opportunities
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-grid">
+
+            <div class="resume-block">
+                <div class="blk-head">
+                    <div class="blk-icon">⚡</div>
+                    <h3 class="block-title">Technical <span>Skills</span></h3>
+                </div>
+                <div class="skill-card-grid">
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">⚙️</span><span class="sk-name">PLC Programming</span></div>
+                        <div class="sk-tag">Omron / Siemens</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="85"></div></div>
+                    </div>
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">📐</span><span class="sk-name">AutoCAD Drafting</span></div>
+                        <div class="sk-tag">Technical Design</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="80"></div></div>
+                    </div>
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">🌐</span><span class="sk-name">Sensor Integration</span></div>
+                        <div class="sk-tag">IoT Systems</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="90"></div></div>
+                    </div>
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">💻</span><span class="sk-name">Web Development</span></div>
+                        <div class="sk-tag">HTML / CSS / JS</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="75"></div></div>
+                    </div>
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">🔌</span><span class="sk-name">Microcontrollers</span></div>
+                        <div class="sk-tag">Arduino / ESP32</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="88"></div></div>
+                    </div>
+
+                    <div class="sk-card">
+                        <div class="sk-top"><span class="sk-emoji">☁️</span><span class="sk-name">Cloud Platforms</span></div>
+                        <div class="sk-tag">Blynk / ThingSpeak</div>
+                        <div class="sk-bar"><div class="sk-fill" data-w="78"></div></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="resume-block">
+                <div class="blk-head">
+                    <div class="blk-icon">🚀</div>
+                    <h3 class="block-title">Key <span>Projects</span></h3>
+                </div>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-content">
+                            <div class="tl-badge">IoT & Automation</div>
+                            <h4>Real-Time Water Monitoring System</h4>
+                            <p>Smart water quality monitoring using turbidity and temperature sensors with real-time cloud telemetry via Blynk, ThingSpeak and Telegram bot alerts.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-content">
+                            <div class="tl-badge">Embedded Systems</div>
+                            <h4>Ultrasonic Mini Radar Array</h4>
+                            <p>Localized tracking system using an ultrasonic sensor mounted on a servo motor sweep to map environmental distance vectors in real time.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TVET MARA Petaling Jaya. All Rights Reserved.</p>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script>
+        // ─── THEME TOGGLE ───────────────────────────────────────────
+        const toggleBtn = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const saved = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', saved);
+        toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+        toggleBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ─── PARTICLE CANVAS ────────────────────────────────────────
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        for (let i = 0; i < 55; i++) {
+            pts.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: Math.random() * 1.5 + 0.5
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            const dotColor = isDark ? 'rgba(14,165,233,0.4)' : 'rgba(14,165,233,0.25)';
+            const lineBase = isDark ? '14,165,233' : '14,165,233';
+
+            pts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = dotColor;
+                ctx.fill();
+            });
+
+            pts.forEach((a, i) => pts.slice(i + 1).forEach(b => {
+                const d = Math.hypot(a.x - b.x, a.y - b.y);
+                if (d < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.strokeStyle = `rgba(${lineBase},${0.07 * (1 - d / 110)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }));
+
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // ─── SKILL BAR ANIMATE ──────────────────────────────────────
+        setTimeout(() => {
+            document.querySelectorAll('.sk-fill').forEach(el => {
+                el.style.width = el.dataset.w + '%';
+            });
+        }, 500);
+    </script>
+
+</body>
+</html>
