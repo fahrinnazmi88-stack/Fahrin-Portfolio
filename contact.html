@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+    <style>
+        #bg-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fahrin<span>Portfolio</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="game.html">JS Tools</a></li>
+                <li><button id="themeToggle" class="theme-btn">🌙</button></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="game.html">JS Tools</a>
+        <button id="mobileThemeToggle" class="theme-btn mobile-theme-btn">🌙</button>
+    </nav>
+
+    <main class="contact-container animate-fade-in">
+        <div class="contact-grid">
+            <!-- INFO PANEL -->
+            <div class="contact-panel info-panel">
+                <div class="panel-header">
+                    <span class="pulse-dot"></span>
+                    <h3>Command Centre / Communication</h3>
+                </div>
+                <h2>Let's Setup A <span>Connection</span></h2>
+                <p class="panel-desc">Open for professional internship opportunities, automation systems integration, or a casual competitive 1v1 match grid setup.</p>
+                <div class="info-cards-list">
+                    <div class="info-sub-card">
+                        <div class="card-icon">📍</div>
+                        <div class="card-details"><h4>Base Station</h4><p>TVET MARA Petaling Jaya, Selangor</p></div>
+                    </div>
+                    <div class="info-sub-card">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-details"><h4>Engineering Focus</h4><p>PLC, AutoCAD, IoT & Sensor Telemetry</p></div>
+                    </div>
+                    <div class="info-sub-card challenge-card">
+                        <div class="card-icon">🎮</div>
+                        <div class="card-details"><h4>Active Gaming Grid</h4><p>eFootball Mobile & EA Sports FC 25</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM PANEL -->
+            <div class="contact-panel form-panel">
+                <div class="panel-header">
+                    <h3>Transmission Protocol — Contact Form</h3>
+                </div>
+                <form id="contactForm" class="secure-form" action="https://formspree.io/f/xqevlayz" method="POST" novalidate>
+
+                    <div class="input-wrapper">
+                        <label for="fullName">Full Name <span class="req">*</span></label>
+                        <input type="text" id="fullName" name="name" placeholder="Enter your full name">
+                        <span class="error-msg" id="nameError">⚠ Full name is required.</span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="email">Email Address <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com">
+                        <span class="error-msg" id="emailError">⚠ Please enter a valid email address.</span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Minimum 6 characters">
+                        <span class="error-msg" id="passwordError">⚠ Password must be at least 6 characters.</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-wrapper">
+                            <label for="dob">Date of Birth <span class="req">*</span></label>
+                            <input type="date" id="dob" name="dob">
+                            <span class="error-msg" id="dobError">⚠ Date of birth is required.</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="gender">Gender <span class="req">*</span></label>
+                            <select id="gender" name="gender" class="styled-select-form">
+                                <option value="">-- Select --</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-msg" id="genderError">⚠ Please select your gender.</span>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="photo">Profile Photo <span class="req">*</span></label>
+                        <input type="file" id="photo" name="photo" accept="image/*" class="file-input">
+                        <span class="error-msg" id="photoError">⚠ Please upload a profile photo.</span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="message">Message <span class="req">*</span></label>
+                        <textarea id="message" name="message" rows="3" placeholder="Type your message here..."></textarea>
+                        <span class="error-msg" id="messageError">⚠ Message is required.</span>
+                    </div>
+
+                    <div class="input-wrapper checkbox-wrapper">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms">
+                            <span>I agree to the <a href="#" class="terms-link">Terms & Conditions</a></span>
+                        </label>
+                        <span class="error-msg" id="termsError">⚠ You must agree to the terms and conditions.</span>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="New Message from Fahrin Portfolio!">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <button type="submit" class="transmit-btn">Execute Transmission 🚀</button>
+                    <div id="successMsg" class="success-msg" style="display:none;">✅ Message sent successfully! Thank you.</div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer><p>&copy; 2026 Tvet Mara Petaling Jaya. All Rights Reserved.</p></footer>
+
+    <script src="nav.js"></script>
+    <script>
+        // ─── THEME TOGGLE ─────────────────────────────────────────────
+        const toggleBtn = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const saved = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', saved);
+        toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+        toggleBtn.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+            const mb = document.getElementById('mobileThemeToggle');
+            if (mb) mb.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ─── HAMBURGER ───────────────────────────────────────────────
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        }));
+        const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+        mobileThemeBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+        mobileThemeBtn.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+            mobileThemeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ─── FORM VALIDATION ─────────────────────────────────────────
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Reset all errors
+            document.querySelectorAll('.error-msg').forEach(msg => msg.style.display = 'none');
+            document.getElementById('successMsg').style.display = 'none';
+
+            // Full Name
+            const name = document.getElementById('fullName').value.trim();
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Email
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Password
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Date of Birth
+            const dob = document.getElementById('dob').value;
+            if (dob === '') {
+                document.getElementById('dobError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Gender
+            const gender = document.getElementById('gender').value;
+            if (gender === '') {
+                document.getElementById('genderError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Profile Photo
+            const photo = document.getElementById('photo').files.length;
+            if (photo === 0) {
+                document.getElementById('photoError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Message
+            const message = document.getElementById('message').value.trim();
+            if (message === '') {
+                document.getElementById('messageError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Terms
+            const terms = document.getElementById('terms').checked;
+            if (!terms) {
+                document.getElementById('termsError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // All validation passed — submit to Formspree
+                document.getElementById('contactForm').submit();
+            }
+        });
+
+        // ─── PARTICLE CANVAS ─────────────────────────────────────────
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+        function resize() { canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+        resize(); window.addEventListener('resize', resize);
+        for(let i=0;i<55;i++) pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.5});
+        function drawParticles(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            const isDark=html.getAttribute('data-theme')==='dark';
+            const dotColor=isDark?'rgba(14,165,233,0.4)':'rgba(14,165,233,0.2)';
+            pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=dotColor;ctx.fill();});
+            pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(14,165,233,${0.07*(1-d/110)})`;ctx.lineWidth=0.5;ctx.stroke();}}));
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    </script>
+</body>
+</html>
